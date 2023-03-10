@@ -56,6 +56,36 @@ services:
         parallelism: 2
         delay: 10s
       restart_policy:
-        condition: on-failure      
+        condition: on-failure  
+  apache:
+    image: httpd:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./apache.conf:/usr/local/apache2/conf/httpd.conf
+    deploy:
+      placement:
+          constraints: [node.role == manager]
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  php:
+    image: php:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./php.ini:/usr/local/etc/php/php.ini
+    deploy:
+      placement:
+          constraints: [node.role == manager]
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure          
 volumes:
     db_data:
