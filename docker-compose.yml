@@ -1,0 +1,70 @@
+version: "3"
+services:
+  node1:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3000:3000"
+    
+  node2:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3001:3001"
+  node3:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3002:3002"
+  node4:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3003:3003"
+  node5:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3004:3004"
+  node6:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "3005:3005"
+  proxy:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - mynet
+    ports:
+      - "80:80"
+    depends_on:
+      - node1
+      - node2
+      - node3
+      - node4
+      - node5
+      - node6
+
+
+
+
