@@ -14,9 +14,9 @@ services:
     deploy:
       placement:
           constraints: [node.role == worker]
-      replicas: 1
+      replicas: 3
       update_config:
-        parallelism: 2
+        parallelism: 3
         delay: 10s
       restart_policy:
         condition: on-failure
@@ -38,7 +38,7 @@ services:
           constraints: [node.role == worker]
       replicas: 3
       update_config:
-        parallelism: 2
+        parallelism: 3
         delay: 10s
       restart_policy:
         condition: on-failure
